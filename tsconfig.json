@@ -15,6 +15,7 @@
     "sourceRoot": "/",
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "experimentalDecorators": true,
     "lib": [
       "dom",
       "es7"

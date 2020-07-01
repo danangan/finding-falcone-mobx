@@ -33,8 +33,11 @@
         "typescript": "3.6.3"
     },
     "dependencies": {
+        "mobx": "^5.15.4",
+        "mobx-react": "^6.2.2",
         "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "react-dom": "^16.13.1",
+        "react-mobx": "^0.0.4"
     },
     "prettier": {
         "trailingComma": "es5",
