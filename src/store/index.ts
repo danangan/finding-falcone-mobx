@@ -1,4 +1,5 @@
 import {createContext} from "react";
+import makeInspectable from 'mobx-devtools-mst';
 import {observable, action} from "mobx";
 import {times} from '../helper';
 
@@ -24,4 +25,8 @@ class FalconeStore {
     };
 }
 
-export default createContext(new FalconeStore())
+const store = new FalconeStore();
+
+makeInspectable(store);
+
+export default createContext(store)
