@@ -1,4 +1,3 @@
-import { createContext } from 'react'
 import makeInspectable from 'mobx-devtools-mst'
 import { observable, action, computed } from 'mobx'
 import {
@@ -11,29 +10,42 @@ import {
 import { fetchPlanetsAndVehicles, findFalcone } from './api'
 import { pipe, filter, first } from 'lodash/fp'
 
-class FalconeStore {
-  @observable planets: Planet[] = []
+export class FalconeStore {
+  constructor(option?: {
+    planets?: Planet[]
+    vehicles?: Vehicle[]
+    selectedValues?: SelectedValue[]
+  }) {
+    this.planets = option && option.planets ? option.planets : []
+    this.vehicles = option && option.vehicles ? option.vehicles : []
+    this.selectedValues =
+      option && option.selectedValues
+        ? option.selectedValues
+        : [
+            {
+              vehicle: '',
+              planet: '',
+            },
+            {
+              vehicle: '',
+              planet: '',
+            },
+            {
+              vehicle: '',
+              planet: '',
+            },
+            {
+              vehicle: '',
+              planet: '',
+            },
+          ]
+  }
 
-  @observable vehicles: Vehicle[] = []
+  @observable planets: Planet[]
 
-  @observable selectedValues: SelectedValue[] = [
-    {
-      vehicle: '',
-      planet: '',
-    },
-    {
-      vehicle: '',
-      planet: '',
-    },
-    {
-      vehicle: '',
-      planet: '',
-    },
-    {
-      vehicle: '',
-      planet: '',
-    },
-  ]
+  @observable vehicles: Vehicle[]
+
+  @observable selectedValues: SelectedValue[]
 
   @computed get selectedVehicles(): string[] {
     return this.selectedValues.map((item) => item.vehicle)
@@ -116,4 +128,4 @@ const store = new FalconeStore()
 
 makeInspectable(store)
 
-export default createContext(store)
+export default store

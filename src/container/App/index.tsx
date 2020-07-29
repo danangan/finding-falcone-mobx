@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, createContext } from 'react'
 import { pipe, map, concat } from 'lodash/fp'
-import falconeStoreContext from '../../store/index'
+import store from '../../store/index'
 import styles from './styles.module.scss'
 import { observer } from 'mobx-react'
-import { Planet, Vehicle, VehicleOption } from '../../root-types'
+import { Planet, VehicleOption } from '../../root-types'
+
+const falconeStoreContext = createContext(store)
 
 function App() {
   const {
